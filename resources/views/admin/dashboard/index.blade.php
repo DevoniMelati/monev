@@ -31,7 +31,7 @@
                      <div class="weight-600 font-30 text-blue">{{Auth::User()->name}}</div>
                   </h4>
                   <p class="font-18 max-width-600">
-                        SI Nova (Sistem Informasi Inovasi) adalah platform digital untuk mendukung inovasi dan kolaborasi di Kota Padang Panjang. Sistem ini memfasilitasi pengelolaan serta pengembangan inovasi guna meningkatkan layanan publik dan pembangunan daerah. 🚀
+                        E-Monev adalah platform digital untuk mendukung inovasi dan kolaborasi di Kota Padang Panjang. Sistem ini memfasilitasi pengelolaan serta pengembangan inovasi guna meningkatkan layanan publik dan pembangunan daerah. 🚀
                   </p>
                </div>
             </div>
