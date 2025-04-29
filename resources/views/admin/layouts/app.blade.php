@@ -365,6 +365,18 @@
 								<span class="micon bi bi-house"></span><span class="mtext">Dashboard</span>
 							</a>
 						</li>
+						<li class="dropdown">
+							<a href="javascript:;" class="dropdown-toggle">
+								<span class="micon dw dw-file"></span><span class="mtext">Data Master</span>
+							</a>
+							<ul class="submenu">
+								<li><a href="/admin/satuan" class="@if ($activePage == 'satuan') active @endif">Data Satuan</a></li>
+								<li><a href="/admin/jenis" class="@if ($activePage == 'jenis') active @endif">Data Jenis Barang</a></li>
+								<li><a href="/admin/layanan" class="@if ($activePage == 'layanan') active @endif">Data Layanan</a></li>
+								<li><a href="/admin/price" class="@if ($activePage == 'price') active @endif">Data Price List</a></li>
+								<li><a href="/admin/metode_pembayaran" class="@if ($activePage == 'metode_pembayaran') active @endif">Metode Pembayaran</a></li>
+							</ul>
+						</li>
 						<li>
 							<a href="/admin/opd" class="dropdown-toggle no-arrow @if ($activePage == 'opd') active @endif">
 								<span class="micon dw dw-id-card"></span><span class="mtext">Data OPD</span>
