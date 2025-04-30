@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\OPDController;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\AplikasiController;
-
+use App\Http\Controllers\Admin\JenisInovasiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,6 +80,20 @@ Route::prefix('admin/aplikasi')
     ->name('admin.aplikasi.')
     ->middleware('cekLevel:1,2,3')
     ->controller(AplikasiController::class)
+    ->group(function () {
+        Route::get('/', 'read')->name('read');
+        Route::get('/add', 'add')->name('add');
+        Route::post('/create', 'create')->name('create');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/delete/{id}', 'delete')->name('delete');
+    });
+
+// Jenis Inovasi
+Route::prefix('admin/jenis_inovasi')
+    ->name('admin.jenis_inovasi.')
+    ->middleware('cekLevel:1,2,3')
+    ->controller(JenisInovasiController::class)
     ->group(function () {
         Route::get('/', 'read')->name('read');
         Route::get('/add', 'add')->name('add');

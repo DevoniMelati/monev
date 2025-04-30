@@ -370,11 +370,7 @@
 								<span class="micon dw dw-file"></span><span class="mtext">Data Master</span>
 							</a>
 							<ul class="submenu">
-								<li><a href="/admin/inovasi" class="@if ($activePage == 'satuan') active @endif">Data Inovasi</a></li>
-								<li><a href="/admin/jenis inovasi" class="@if ($activePage == 'jenis') active @endif">Data Jenis Inovasi</a></li>
-								<li><a href="/admin/tahun periode" class="@if ($activePage == 'layanan') active @endif">Data Tahun Periode</a></li>
-								<li><a href="/admin/status" class="@if ($activePage == 'price') active @endif">Data Status</a></li>
-								<li><a href="/admin/notifikasi" class="@if ($activePage == 'metode_pembayaran') active @endif">Notifikasi</a></li>
+								<li><a href="/admin/jenis_inovasi" class="@if ($activePage == 'jenis_inovasi') active @endif">Data Jenis Inovasi</a></li>
 							</ul>
 						</li>
 						<li>
