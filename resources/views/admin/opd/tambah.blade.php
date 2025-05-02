@@ -36,6 +36,17 @@
             <label>Nama OPD</label>
             <input type="text" autofocus name="nama" required class="form-control" placeholder="Masukkan Nama OPD .....">
          </div>
+         <div class="col-md-6">
+                    <label>Alamat</label>
+                    <input type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat ....." required>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label>Kontak</label>
+                    <input type="text" name="kontak" class="form-control" placeholder="Masukan Kontak ....." required>
+                </div>
+            </div>
          <button type="submit" class="btn btn-primary mt-1 mr-2"><span class="icon-copy ti-save"></span> Tambah Data</button>               
       </form>
    </div>

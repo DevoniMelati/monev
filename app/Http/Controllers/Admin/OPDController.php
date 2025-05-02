@@ -33,23 +33,22 @@ class OPDController extends Controller
 
     public function edit($id){
         $opd = DB::table('opd')->where('id',$id)->first();
-        
         return view('admin.opd.edit',['opd'=>$opd]);
     }
 
     public function update(Request $request, $id) {
-        DB::table('opd')  
-            ->where('id', $id)
-            ->update([
-            'nama' => $request->nama]);
-
+        DB::table('opd')->where('id', $id)->update([
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'kontak' => $request->kontak,
+        ]);
+    
         return redirect('/admin/opd')->with("success","Data Berhasil Diupdate !");
     }
 
     public function delete($id)
     {
         DB::table('opd')->where('id',$id)->delete();
-
         return redirect('/admin/opd')->with("success","Data Berhasil Dihapus !");
     }
 }

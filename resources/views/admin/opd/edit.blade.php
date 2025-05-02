@@ -31,13 +31,26 @@
       </div>
       <hr style="margin-top: 0px">
       <form action="/admin/opd/update/{{$opd->id}}" method="POST" enctype="multipart/form-data">
-         {{ csrf_field() }}
-         <div class="form-group">
-            <label>Nama OPD</label>
-            <input type="text" autofocus name="nama" required class="form-control" value="{{$opd->nama}}" placeholder="Masukkan Nama OPD .....">     
-         </div>
-         <button type="submit" class="btn btn-danger mt-1 mr-2"><span class="icon-copy ti-save"></span> Update Data</button>               
-      </form>
+   {{ csrf_field() }}
+   <div class="form-group">
+      <label>Nama OPD</label>
+      <input type="text" name="nama" required class="form-control" value="{{ $opd->nama }}" placeholder="Masukkan Nama OPD .....">     
+   </div>
+
+   <div class="form-group">
+      <label>Alamat</label>
+      <input type="text" name="alamat" class="form-control" value="{{ $opd->alamat }}" placeholder="Masukkan Alamat .....">    
+   </div>
+
+   <div class="form-group">
+      <label>Kontak</label>
+      <input type="text" name="kontak" class="form-control" value="{{ $opd->kontak }}" placeholder="Masukkan Kontak .....">     
+   </div>
+
+   <button type="submit" class="btn btn-danger mt-1 mr-2"><span class="icon-copy ti-save"></span> Update Data
+   </button>               
+</form>
+
    </div>
    <!-- Striped table End -->
 </div>

@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jenis_inovasi', function (Blueprint $table) {
+        Schema::create('aplikasi', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('jenis inovasi');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->default(DB::raw('NULL ON UPDATE CURRENT_TIMESTAMP'))->nullable();
+            $table->timestamps();
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jenis_inovasi');
+        Schema::dropIfExists('aplikasi');
     }
 };
