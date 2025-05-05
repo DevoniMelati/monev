@@ -69,9 +69,12 @@
                      <button class="btn btn-info btn-xs">Programmer</button>
                   @elseif($data->level == '4')
                      <button class="btn btn-success btn-xs">Pimpinan</button>
+                  
                   @endif
+                  
                </td>
                <td class="text-center" width="15%">
+                  <!-- Action buttons inside the Action column -->
                   <button class="btn btn-info btn-xs" data-toggle="modal" data-target="#reset-{{$data->id}}"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="Reset Password"></i></button>
                   <a href="/admin/account/edit/{{$data->id}}"><button class="btn btn-success btn-xs"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Edit Data"></i></button></a>
                   <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#data-{{$data->id}}"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete Data"></i></button>
@@ -91,7 +94,7 @@
          <div class="modal-body">
             <h2 class="text-center">
             Apakah Anda Yakin Mereset Password Ini ?
-            <h2>
+            </h2>
             <hr>
             <div class="form-group" style="font-size: 17px;">
                <label for="exampleInputUsername1">Nama Account</label>
@@ -122,7 +125,7 @@
          <div class="modal-body">
             <h2 class="text-center">
             Apakah Anda Yakin Menghapus Data Ini ?
-            <h2>
+            </h2>
             <hr>
             <div class="form-group" style="font-size: 17px;">
                <label for="exampleInputUsername1">Nama Account</label>

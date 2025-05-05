@@ -48,24 +48,25 @@
                      <option value="3">Programmer</option>
                   </select>
                </div>
-            </div>
+            </div> 
             <div class="col-md-6">
                <div class="form-group">
                   <label>Username Account</label>
                   <input type="text" name="username" required class="form-control" placeholder="Masukkan Username Account .....">
                </div>
             </div>
-
             <div class="col-md-6">
                <div class="form-group">
-                  <label>Password Account</label>
-                  <input type="text" name="password" required class="form-control" placeholder="Masukkan Password Account ....." value="SINova2025">
+                  <label>PASSWORD</label>
+                  <input type="text" name="password" required class="form-control" placeholder="Masukkan Password.....">
                </div>
             </div>
-         </div>
-         <button type="submit" class="btn btn-primary mt-1 mr-2"><span class="icon-copy ti-save"></span> Tambah Data</button>               
-      </form>
-   </div>
+               <button type="submit" class="btn btn-primary mt-3">
+                <span class="icon-copy ti-save"></span> Tambah Data
+            </button>
+        </form>
+    </div>
+</div>
    <!-- Striped table End -->
 </div>
 <script>

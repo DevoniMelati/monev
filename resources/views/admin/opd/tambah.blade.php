@@ -1,5 +1,5 @@
 @extends('admin.layouts.app', [
-'activePage' => 'opd',
+    'activePage' => 'opd',
 ])
 @section('content')
 <div class="min-height-200px">
@@ -19,37 +19,44 @@
          </div>
       </div>
    </div>
-   <!-- Striped table start -->
-   <div class="pd-20 card-box mb-30">
-      <div class="clearfix">
-         <div class="pull-left">
-            <h2 class="text-primary h2"><i class="icon-copy dw dw-add-file-1"></i> Tambah Data OPD</h2>
+
+   <!-- Form Start -->
+   <div class="pd-20 card-box mb-5 shadow-sm bg-white rounded">
+      <div class="clearfix mb-3">
+         <div class="float-left">
+            <h4 class="text-primary"><i class="icon-copy dw dw-add-file-1"></i> Tambah Data OPD</h4>
          </div>
-         <div class="pull-right">
-            <a href="/admin/opd" class="btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
+         <div class="float-right">
+            <a href="/admin/opd" class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
          </div>
       </div>
-      <hr style="margin-top: 0px">
+      <hr>
+
       <form action="/admin/opd/create" method="POST" enctype="multipart/form-data">
          {{ csrf_field() }}
-         <div class="form-group">
-            <label>Nama OPD</label>
-            <input type="text" autofocus name="nama" required class="form-control" placeholder="Masukkan Nama OPD .....">
+         <div class="row">
+            <div class="col-md-6 mb-3">
+               <label>Nama OPD</label>
+               <input type="text" name="nama" required autofocus class="form-control" placeholder="Masukkan Nama OPD .....">
+            </div>
+            <div class="col-md-6 mb-3">
+               <label>Alamat</label>
+               <input type="text" name="alamat" required class="form-control" placeholder="Masukkan Alamat .....">
+            </div>
+            <div class="col-md-6 mb-3">
+               <label>Kontak</label>
+               <input type="text" name="kontak" required class="form-control" placeholder="Masukkan Kontak .....">
+            </div>
          </div>
-         <div class="col-md-6">
-                    <label>Alamat</label>
-                    <input type="text" name="alamat" class="form-control" placeholder="Masukkan Alamat ....." required>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-6">
-                    <label>Kontak</label>
-                    <input type="text" name="kontak" class="form-control" placeholder="Masukan Kontak ....." required>
-                </div>
-            </div>
-         <button type="submit" class="btn btn-primary mt-1 mr-2"><span class="icon-copy ti-save"></span> Tambah Data</button>               
+
+         <button type="submit" class="btn btn-primary mt-3">
+            <i class="icon-copy ti-save"></i> Tambah Data
+         </button>
       </form>
    </div>
-   <!-- Striped table End -->
+   <!-- Form End -->
 </div>
+
+<!-- Tambahkan margin bawah untuk memberi jarak dari footer -->
+<div style="margin-bottom: 25px;"></div>
 @endsection

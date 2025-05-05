@@ -25,10 +25,10 @@ class AccountController extends Controller
     }
 
     public function create(Request $request){
-        DB::table('users')->insert([  
+        DB::table('users')->insert([
             'name' => $request->name,
-            'password' => bcrypt($request->password),
             'username' => $request->username,
+            'password' => bcrypt($request->password),
             'level' => $request->level
         ]);
 
@@ -42,17 +42,14 @@ class AccountController extends Controller
     }
 
     public function update(Request $request, $id) {
-        DB::table('users')  
-            ->where('id', $id)
-            ->update([
-            'name' => $request->name,
-            'username' => $request->username,
-            'level' => $request->level
-        ]);
-
-        return redirect('/admin/account')->with("success","Data Berhasil Diupdate !");
-    }
-
+            DB::table('users')->where('id', $id)->update([
+                'name' => $request->name,
+                'username' => $request->username,
+                'password' => bcrypt($request->password),
+                'level' => $request->level
+            ]);
+            return redirect('/admin/account')->with("success", "Data Berhasil Diubah!");
+     }
     public function delete($id)
     {
         DB::table('users')->where('id',$id)->delete();
@@ -64,8 +61,8 @@ class AccountController extends Controller
         DB::table('users')  
             ->where('id', $id)
             ->update([
-            'password' => bcrypt('Haqqgroup2025')]);
+            'password' => bcrypt('Monev2025')]);
 
-        return redirect('/admin/account')->with("success","Password Berhasil Direset ! | Password Default : Haqqgroup2025");
+        return redirect('/admin/account')->with("success","Password Berhasil Direset ! | Password Default : Monev2025");
     }
 }

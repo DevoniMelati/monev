@@ -26,7 +26,11 @@ class OPDController extends Controller
 
     public function create(Request $request){
         DB::table('opd')->insert([  
-            'nama' => $request->nama]);
+            'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'kontak' => $request->kontak,
+        ]);
+
 
         return redirect('/admin/opd')->with("success","Data Berhasil Ditambah !");
     }

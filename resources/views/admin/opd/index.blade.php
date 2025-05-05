@@ -62,7 +62,7 @@
                <td class="text-center">{{$no++}}</td>
                <td>{{$data->nama}}</td>
                <td>{{$data->alamat}}</td>
-               <td>{{$data->nama}}</td>
+               <td>{{$data->kontak}}</td>
                <td class="text-center" width="15%">
                <a href="/admin/opd/edit/{{$data->id}}"><button class="btn btn-success btn-xs"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Edit Data"></i></button></a>
                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#data-{{$data->id}}"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete Data"></i></button>

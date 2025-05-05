@@ -41,7 +41,13 @@
             </div>
             <div class="col-md-4">
                <div class="form-group">
-                  <label>Type account</label>
+                  <label>Username Account</label>
+                  <input type="text" name="username" required class="form-control" value="{{$account->username}}" placeholder="Masukkan Username Account .....">
+               </div>
+            </div>
+            <div class="col-md-4">
+               <div class="form-group">
+                  <label>Type Account</label>
                   <select class="form-control" required name="level">
                      <option value="">-- Pilih Type Account --</option>
                      <option value="2" @if($account->level == '2') selected @endif>Penanggung Jawab Inovasi</option>
@@ -49,13 +55,6 @@
                   </select>
                </div>
             </div>
-            <div class="col-md-4">
-               <div class="form-group">
-                  <label>Username Account</label>
-                  <input type="text" name="username" required class="form-control" value="{{$account->username}}" placeholder="Masukkan Username Account .....">
-               </div>
-            </div>
-         </div>
          <button type="submit" class="btn btn-primary mt-1 mr-2"><span class="icon-copy ti-save"></span> Update Data</button>               
       </form>
    </div>

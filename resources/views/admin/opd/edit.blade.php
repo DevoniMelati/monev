@@ -25,33 +25,35 @@
          <div class="pull-left">
             <h2 class="text-primary h2"><i class="icon-copy dw dw-edit-1"></i> Edit Data OPD</h2>
          </div>
-         <div class="pull-right">
-            <a href="/admin/opd" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
+         <div class="float-right">
+            <a href="/admin/opd" class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
          </div>
       </div>
       <hr style="margin-top: 0px">
       <form action="/admin/opd/update/{{$opd->id}}" method="POST" enctype="multipart/form-data">
-   {{ csrf_field() }}
-   <div class="form-group">
-      <label>Nama OPD</label>
-      <input type="text" name="nama" required class="form-control" value="{{ $opd->nama }}" placeholder="Masukkan Nama OPD .....">     
+          {{ csrf_field() }}
+            <div class="row">
+            <div class="col-md-6 mb-3">
+               <label>Nama OPD</label>
+               <input type="text" name="nama" required autofocus class="form-control" placeholder="Masukkan Nama OPD .....">
+            </div>
+            <div class="col-md-6 mb-3">
+               <label>Alamat</label>
+               <input type="text" name="alamat" required class="form-control" placeholder="Masukkan Alamat .....">
+            </div>
+            <div class="col-md-6 mb-3">
+               <label>Kontak</label>
+               <input type="text" name="kontak" required class="form-control" placeholder="Masukkan Kontak .....">
+            </div>
+         </div>
+         <button type="submit" class="btn btn-primary mt-3">
+            <i class="icon-copy ti-save"></i> Update Data
+         </button>
+      </form>
    </div>
-
-   <div class="form-group">
-      <label>Alamat</label>
-      <input type="text" name="alamat" class="form-control" value="{{ $opd->alamat }}" placeholder="Masukkan Alamat .....">    
-   </div>
-
-   <div class="form-group">
-      <label>Kontak</label>
-      <input type="text" name="kontak" class="form-control" value="{{ $opd->kontak }}" placeholder="Masukkan Kontak .....">     
-   </div>
-
-   <button type="submit" class="btn btn-danger mt-1 mr-2"><span class="icon-copy ti-save"></span> Update Data
-   </button>               
-</form>
-
-   </div>
-   <!-- Striped table End -->
+   <!-- Form End -->
 </div>
+
+<!-- Tambahkan margin bawah untuk memberi jarak dari footer -->
+<div style="margin-bottom: 25px;"></div>
 @endsection
