@@ -6,8 +6,10 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\OPDController;
 use App\Http\Controllers\Admin\AccountController;
-use App\Http\Controllers\Admin\AplikasiController;
+use App\Http\Controllers\Admin\InovasiController;
 use App\Http\Controllers\Admin\JenisInovasiController;
+use App\Http\Controllers\Admin\TipeLisensiInovasiController;
+use App\Http\Controllers\Admin\DokumenController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -75,11 +77,11 @@ Route::prefix('admin/account')
         Route::get('/reset/{id}', 'reset')->name('reset');
     });
 
-// Aplikasi
-Route::prefix('admin/aplikasi')
-    ->name('admin.aplikasi.')
+// Inovasi
+Route::prefix('admin/inovasi')
+    ->name('admin.inovasi.')
     ->middleware('cekLevel:1,2,3')
-    ->controller(AplikasiController::class)
+    ->controller(InovasiController::class)
     ->group(function () {
         Route::get('/', 'read')->name('read');
         Route::get('/add', 'add')->name('add');
@@ -102,3 +104,30 @@ Route::prefix('admin/jenis_inovasi')
         Route::post('/update/{id}', 'update')->name('update');
         Route::get('/delete/{id}', 'delete')->name('delete');
     });
+
+    // Tipe Lisensi Inovasi
+Route::prefix('admin/tipe_lisensi_inovasi')
+    ->name('admin.tipe_lisensi_inovasi.')
+    ->middleware('cekLevel:1,2,3')
+    ->controller(TipeLisensiInovasiController::class)
+    ->group(function () {
+    Route::get('/', 'read')->name('read');
+    Route::get('/add', 'add')->name('add');
+    Route::post('/create', 'create')->name('create');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::post('/update/{id}', 'update')->name('update');
+    Route::get('/delete/{id}', 'delete')->name('delete');
+});
+
+Route::prefix('admin/dokumen')
+    ->name('admin.dokumen.')
+    ->middleware('cekLevel:1,2,3')
+    ->controller(DokumenController::class)
+    ->group(function () {
+        Route::get('/', 'read')->name('read');
+        Route::get('/add', 'add')->name('add');
+        Route::post('/create', 'create')->name('create'); // pastikan ini post dan methodnya create
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/delete/{id}', 'delete')->name('delete');
+});

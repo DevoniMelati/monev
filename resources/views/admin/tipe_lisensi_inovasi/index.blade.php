@@ -1,5 +1,5 @@
 @extends('admin.layouts.app', [
-'activePage' => 'aplikasi',
+'activePage' => 'tipe_lisensi_inovasi',
 ])
 @section('content')
 <div class="min-height-200px">
@@ -7,12 +7,12 @@
       <div class="row">
          <div class="col-md-6 col-sm-12">
             <div class="title">
-               <h4>Data Aplikasi</h4>
+               <h4>Data Tipe Lisensi Inovasi</h4>
             </div>
             <nav aria-label="breadcrumb" role="navigation">
                <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#">Data Master</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Data Aplikasi</li>
+                  <li class="breadcrumb-item active" aria-current="page">Data Tipe Lisensi Inovasi</li>
                </ol>
             </nav>
          </div>
@@ -22,10 +22,10 @@
    <div class="pd-20 card-box mb-30">
       <div class="clearfix">
          <div class="pull-left">
-            <h2 class="text-primary h2"><i class="icon-copy dw dw-list"></i> List Data Aplikasi</h2>
+            <h2 class="text-primary h2"><i class="icon-copy dw dw-list"></i> List Data Tipe Lisensi Inovasi</h2>
          </div>
          <div class="pull-right">
-            <a href="/admin/aplikasi/add" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Tambah Data</a>
+            <a href="/admin/tipe_lisensi_inovasi/add" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Tambah Data</a>
          </div>
       </div>
       <hr style="margin-top: 0px;">
@@ -48,43 +48,21 @@
       <table class="table table-striped table-bordered data-table hover">
          <thead class="bg-primary text-white">
             <tr>
-               <th class="align-center" width="5%">#</th>
-               <th class="align-center">Nama Aplikasi</th>
-               <th class="align-center">URL</th>
-               <th class="align-center">Username</th>
-               <th class="align-center">Password</th>
-               <th class="align-center">Status</th>
-               <th class="align-center">Programmer</th>
-               <th class="align-center">Penanggung Jawab</th>
-               <th class="table-plus datatable-nosort text-center align-center">Action</th>
+               <th width="5%" >No</th>
+               <th>Nama Tipe Lisensi Inovasi</th>
+               <th>Jenis Inovasi</th>
+               <th class="table-plus datatable-nosort text-center">Action</th>
             </tr>
          </thead>
          <tbody>
             <?php $no = 1; ?>
-            @foreach($aplikasi as $data)
-            <?php
-                  $programmer = DB::table('users')->find($data->programmer);
-                  $pj = DB::table('users')->find($data->pj);
-            ?>
+            @foreach($tipe_lisensi_inovasi as $data)
             <tr>
                <td class="text-center">{{$no++}}</td>
                <td>{{$data->nama}}</td>
-               <td>{{$data->url}}</td>
-               <td>{{$data->username}}</td>
-               <td>{{$data->password}}</td>
-               <td class="text-center">
-                  @if($data->status == 'Rusak')
-                     <button class="btn btn-danger btn-xs">Rusak</button> 
-                  @elseif($data->status == 'Aman')
-                     <button class="btn btn-success btn-xs">Aman</button>
-                  @else
-                     <button class="btn btn-danger btn-xs">Maintanance</button>
-                  @endif
-               </td>
-               <td>{{$programmer->name ?? '-'}}</td>
-               <td>{{$pj->name ?? '-'}}</td>
+               <td>{{ $data->jenis_inovasi }}</td>
                <td class="text-center" width="15%">
-                  <a href="/admin/aplikasi/edit/{{$data->id}}"><button class="btn btn-success btn-xs"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Edit Data"></i></button></a>
+                  <a href="/admin/tipe_lisensi_inovasi/edit/{{$data->id}}"><button class="btn btn-success btn-xs"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Edit Data"></i></button></a>
                   <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#data-{{$data->id}}"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete Data"></i></button>
                </td>
             </tr>
@@ -95,7 +73,7 @@
    <!-- Striped table End -->
 </div>
 <!-- Modal -->
-@foreach($aplikasi as $data)
+@foreach($tipe_lisensi_inovasi as $data)
 <div class="modal fade" id="data-{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
    <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -105,24 +83,12 @@
             <h2>
             <hr>
             <div class="form-group" style="font-size: 17px;">
-               <label for="exampleInputUsername1">Nama aplikasi</label>
+               <label for="exampleInputUsername1">Nama Tipe Lisensi Inovasi</label>
                <input class="form-control" value="{{$data->nama}}" readonly style="background-color: white;pointer-events: none;">
-            </div>
-            <div class="form-group" style="font-size: 17px;">
-               <label for="exampleInputUsername1">URL</label>
-               <input class="form-control" value="{{$data->url}}" readonly style="background-color: white;pointer-events: none;">
-            </div>
-            <div class="form-group" style="font-size: 17px;">
-               <label for="exampleInputUsername1">Username</label>
-               <input class="form-control" value="{{$data->username}}" readonly style="background-color: white;pointer-events: none;">
-            </div>
-            <div class="form-group" style="font-size: 17px;">
-               <label for="exampleInputUsername1">Password</label>
-               <input class="form-control" type="text" value="{{$data->password}}" readonly style="background-color: white;pointer-events: none;">
             </div>
             <div class="row mt-4">
                <div class="col-md-6">
-                  <a href="/admin/aplikasi/delete/{{$data->id}}" style="text-decoration: none;">
+                  <a href="/admin/tipe_lisensi_inovasi/delete/{{$data->id}}" style="text-decoration: none;">
                   <button type="button" class="btn btn-primary btn-block">Ya</button>
                   </a>
                </div>

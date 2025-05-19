@@ -32,7 +32,7 @@
       <hr style="margin-top: 0px">
       <form action="/admin/jenis_inovasi/create" method="POST" enctype="multipart/form-data">
          {{ csrf_field() }}
-         <div class="form-group">
+         <div class="col-md-6 mb-3">
             <label>Nama Jenis Inovasi</label>
             <input type="text" autofocus name="nama" required class="form-control" placeholder="Masukkan Nama Jenis Inovasi .....">
          </div>

@@ -48,7 +48,7 @@
       <table class="table table-striped table-bordered data-table hover">
          <thead class="bg-primary text-white">
             <tr>
-               <th width="5%" >#</th>
+               <th width="5%" >No</th>
                <th>Nama Account</th>
                <th>Username Account</th>
                <th class="text-center">Type account</th>

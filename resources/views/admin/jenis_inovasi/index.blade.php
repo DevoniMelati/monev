@@ -48,7 +48,7 @@
       <table class="table table-striped table-bordered data-table hover">
          <thead class="bg-primary text-white">
             <tr>
-               <th width="5%" >#</th>
+               <th width="5%" >No</th>
                <th>Nama Jenis Inovasi</th>
                <th class="table-plus datatable-nosort text-center">Action</th>
             </tr>

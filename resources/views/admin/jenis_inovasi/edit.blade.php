@@ -25,20 +25,29 @@
          <div class="pull-left">
             <h2 class="text-primary h2"><i class="icon-copy dw dw-edit-1"></i> Edit Data Jenis Inovasi</h2>
          </div>
-         <div class="pull-right">
-            <a href="/admin/jenis_inovasi" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
+         <div class="float-right">
+            <a href="/admin/jenis_inovasi" class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
          </div>
       </div>
       <hr style="margin-top: 0px">
       <form action="/admin/jenis_inovasi/update/{{$jenis_inovasi->id}}" method="POST" enctype="multipart/form-data">
-         {{ csrf_field() }}
-         <div class="form-group">
+          {{ csrf_field() }}
+           <div class="row">
+        <div class="col-md-6 mb-3">
             <label>Nama Jenis Inovasi</label>
-            <input type="text" autofocus name="nama" required class="form-control" value="{{$jenis_inovasi->nama}}" placeholder="Masukkan Nama Jenis Inovasi .....">     
+            <input type="text" name="nama" required autofocus class="form-control" 
+                   placeholder="Masukkan Nama Jenis Inovasi ....."
+                   value="{{ old('nama', $jenis_inovasi->nama) }}">
          </div>
-         <button type="submit" class="btn btn-danger mt-1 mr-2"><span class="icon-copy ti-save"></span> Update Data</button>               
+         </div>
+         <button type="submit" class="btn btn-primary mt-3">
+            <i class="icon-copy ti-save"></i> Update Data
+         </button>
       </form>
    </div>
-   <!-- Striped table End -->
+   <!-- Form End -->
 </div>
+
+<!-- Tambahkan margin bawah untuk memberi jarak dari footer -->
+<div style="margin-bottom: 25px;"></div>
 @endsection

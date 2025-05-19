@@ -28,7 +28,6 @@ class OPDController extends Controller
         DB::table('opd')->insert([  
             'nama' => $request->nama,
             'alamat' => $request->alamat,
-            'kontak' => $request->kontak,
         ]);
 
 
@@ -44,7 +43,6 @@ class OPDController extends Controller
         DB::table('opd')->where('id', $id)->update([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
-            'kontak' => $request->kontak,
         ]);
     
         return redirect('/admin/opd')->with("success","Data Berhasil Diupdate !");

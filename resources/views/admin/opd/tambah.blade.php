@@ -43,12 +43,7 @@
                <label>Alamat</label>
                <input type="text" name="alamat" required class="form-control" placeholder="Masukkan Alamat .....">
             </div>
-            <div class="col-md-6 mb-3">
-               <label>Kontak</label>
-               <input type="text" name="kontak" required class="form-control" placeholder="Masukkan Kontak .....">
-            </div>
          </div>
-
          <button type="submit" class="btn btn-primary mt-3">
             <i class="icon-copy ti-save"></i> Tambah Data
          </button>
