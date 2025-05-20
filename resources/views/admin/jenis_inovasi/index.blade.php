@@ -49,7 +49,7 @@
          <thead class="bg-primary text-white">
             <tr>
                <th width="5%" >No</th>
-               <th>Nama Jenis Inovasi</th>
+               <th>Jenis Inovasi</th>
                <th class="table-plus datatable-nosort text-center">Action</th>
             </tr>
          </thead>
@@ -81,7 +81,7 @@
             <h2>
             <hr>
             <div class="form-group" style="font-size: 17px;">
-               <label for="exampleInputUsername1">Nama Jenis Inovasi</label>
+               <label for="exampleInputUsername1">Nama</label>
                <input class="form-control" value="{{$data->nama}}" readonly style="background-color: white;pointer-events: none;">
             </div>
             <div class="row mt-4">

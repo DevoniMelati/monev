@@ -33,7 +33,7 @@
       <hr>
 
       <form action="/admin/opd/create" method="POST" enctype="multipart/form-data">
-         {{ csrf_field() }}
+    {{ csrf_field() }}
          <div class="row">
             <div class="col-md-6 mb-3">
                <label>Nama OPD</label>
@@ -43,15 +43,19 @@
                <label>Alamat</label>
                <input type="text" name="alamat" required class="form-control" placeholder="Masukkan Alamat .....">
             </div>
-         </div>
-         <button type="submit" class="btn btn-primary mt-3">
-            <i class="icon-copy ti-save"></i> Tambah Data
-         </button>
-      </form>
-   </div>
-   <!-- Form End -->
+          <div class="col-md-6 mb-3">
+               <label>Kontak</label>
+               <input type="text" name="kontak" required class="form-control" placeholder="Masukkan Kontak .....">
+            </div>
+            <div class="col-md-6 mb-3">
+               <label>Koordinat</label>
+               <input type="text" name="koordinat" required class="form-control" placeholder="Masukkan Koordinat .....">
+            </div>
 </div>
-
-<!-- Tambahkan margin bawah untuk memberi jarak dari footer -->
-<div style="margin-bottom: 25px;"></div>
+       <button type="submit" class="btn btn-primary">
+                <i class="ti-save"></i> Tambah Data
+            </button>
+        </form>
+    </div>
+</div>
 @endsection

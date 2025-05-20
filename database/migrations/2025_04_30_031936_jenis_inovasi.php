@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('jenis_inovasi', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('jenis inovasi');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('NULL ON UPDATE CURRENT_TIMESTAMP'))->nullable();
         });

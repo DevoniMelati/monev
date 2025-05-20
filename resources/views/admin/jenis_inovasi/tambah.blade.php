@@ -30,14 +30,18 @@
          </div>
       </div>
       <hr style="margin-top: 0px">
-      <form action="/admin/jenis_inovasi/create" method="POST" enctype="multipart/form-data">
-         {{ csrf_field() }}
-         <div class="col-md-6 mb-3">
-            <label>Nama Jenis Inovasi</label>
-            <input type="text" autofocus name="nama" required class="form-control" placeholder="Masukkan Nama Jenis Inovasi .....">
-         </div>
-         <button type="submit" class="btn btn-primary mt-1 mr-2"><span class="icon-copy ti-save"></span> Tambah Data</button>               
-      </form>
+     <form action="/admin/jenis_inovasi/create" method="POST" enctype="multipart/form-data">
+    {{ csrf_field() }}
+    <div class="col-md-6 mb-3">
+        <label>Jenis Inovasi</label>
+        <input type="text" autofocus name="nama" required class="form-control" placeholder="Masukkan Jenis Inovasi .....">
+    </div>
+    <div class="col-md-6">
+        <button type="submit" class="btn btn-primary mt-1">
+            <span class="icon-copy ti-save"></span> Tambah Data
+        </button>
+    </div>
+</form>
    </div>
    <!-- Striped table End -->
 </div>

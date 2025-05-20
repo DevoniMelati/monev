@@ -60,7 +60,7 @@
                     <select class="form-control" name="id_tipe_lisensi_inovasi" required>
                         <option value="">-- Pilih Tipe Lisensi Inovasi --</option>
                         @foreach($tipe_lisensi_inovasi as $data)
-                            <option value="{{ $data->id }}" {{ $inovasi->tipe_lisensi_inovasi == $data->id ? 'selected' : '' }}>{{ $data->nama }}</option>
+                            <option value="{{ $data->id }}" {{ $inovasi->id_tipe_lisensi_inovasi == $data->id ? 'selected' : '' }}>{{ $data->nama }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -69,7 +69,7 @@
                 <select class="form-control" name="id_jenis_inovasi" required>
                 <option value="">-- Pilih Jenis Inovasi --</option>
                  @foreach($jenis_inovasi as $data)
-                <option value="{{ $data->id }}" {{ $inovasi->jenis_inovasi == $data->id ? 'selected' : '' }}>
+               <option value="{{ $data->id }}" {{ $inovasi->id_jenis_inovasi == $data->id ? 'selected' : '' }}>{{ $data->nama }}</option>
                 {{ $data->nama }}
                 </option>
              @endforeach

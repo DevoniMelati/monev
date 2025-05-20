@@ -19,8 +19,11 @@ return new class extends Migration
             $table->string('url');
             $table->string('uraian_inovasi');
             $table->string('basis_inovasi');
-            $table->string('tipe_lisensi_inovasi');
-            $table->string('jenis_inovasi');
+
+            // Foreign key harus unsignedBigInteger
+            $table->unsignedBigInteger('id_tipe_lisensi_inovasi');
+            $table->unsignedBigInteger('id_jenis_inovasi');
+
             $table->string('unit_pengembang');
             $table->string('unit_operasional_teknologi');
             $table->string('status');

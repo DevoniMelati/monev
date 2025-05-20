@@ -31,29 +31,47 @@
       </div>
       <hr style="margin-top: 0px">
       <form action="/admin/opd/update/{{$opd->id}}" method="POST" enctype="multipart/form-data">
-    {{ csrf_field() }}
-    <div class="row">
-        <div class="col-md-6 mb-3">
-            <label>Nama OPD</label>
-            <input type="text" name="nama" required autofocus class="form-control" 
-                   placeholder="Masukkan Nama OPD ....."
-                   value="{{ old('nama', $opd->nama) }}">
-        </div>
-        <div class="col-md-6 mb-3">
-            <label>Alamat</label>
-            <input type="text" name="alamat" required class="form-control" 
-                   placeholder="Masukkan Alamat ....."
-                   value="{{ old('alamat', $opd->alamat) }}">
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary mt-3">
-        <i class="icon-copy ti-save"></i> Update Data
-    </button>
-</form>
+         {{ csrf_field() }}
+         <div class="row">
+            <div class="col-md-6 mb-3">
+               <label>Nama OPD</label>
+               <input type="text" name="nama" required autofocus class="form-control" 
+                      placeholder="Masukkan Nama OPD ....."
+                      value="{{ old('nama', $opd->nama) }}">
+            </div>
+            <div class="col-md-6 mb-3">
+               <label>Alamat</label>
+               <input type="text" name="alamat" required class="form-control" 
+                      placeholder="Masukkan Alamat ....."
+                      value="{{ old('alamat', $opd->alamat) }}">
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6 mb-3">
+               <label>Kontak</label>
+               <input type="text" name="kontak" required class="form-control" 
+                      placeholder="Masukkan Kontak ....."
+                      value="{{ old('kontak', $opd->kontak) }}">
+            </div>
+            <div class="col-md-6 mb-3">
+               <label>Koordinat</label>
+               <input type="text" name="koordinat" required class="form-control" 
+                      placeholder="Masukkan Koordinat ....."
+                      value="{{ old('koordinat', $opd->koordinat) }}">
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6 text-left">
+               <button type="submit" class="btn btn-primary mt-1">
+                   <span class="icon-copy ti-save"></span> Update Data
+               </button>
+            </div>
+         </div>
+      </form>
+      <!-- Form End -->
    </div>
-   <!-- Form End -->
-</div>
 
-<!-- Tambahkan margin bawah untuk memberi jarak dari footer -->
-<div style="margin-bottom: 25px;"></div>
+   <!-- Tambahkan margin bawah untuk memberi jarak dari footer -->
+   <div style="margin-bottom: 25px;"></div>
+</div>
 @endsection

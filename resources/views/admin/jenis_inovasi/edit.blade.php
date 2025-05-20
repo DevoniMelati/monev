@@ -31,19 +31,19 @@
       </div>
       <hr style="margin-top: 0px">
       <form action="/admin/jenis_inovasi/update/{{$jenis_inovasi->id}}" method="POST" enctype="multipart/form-data">
-          {{ csrf_field() }}
-           <div class="row">
-        <div class="col-md-6 mb-3">
-            <label>Nama Jenis Inovasi</label>
-            <input type="text" name="nama" required autofocus class="form-control" 
-                   placeholder="Masukkan Nama Jenis Inovasi ....."
-                   value="{{ old('nama', $jenis_inovasi->nama) }}">
-         </div>
-         </div>
-         <button type="submit" class="btn btn-primary mt-3">
+    {{ csrf_field() }}
+    <div class="col-md-6 mb-3">
+        <label>Jenis Inovasi</label>
+        <input type="text" name="nama" required autofocus class="form-control" 
+               placeholder="Masukkan Jenis Inovasi ....."
+               value="{{ old('nama', $jenis_inovasi->nama) }}">
+    </div>
+    <div class="col-md-6">
+        <button type="submit" class="btn btn-primary mt-1">
             <i class="icon-copy ti-save"></i> Update Data
-         </button>
-      </form>
+        </button>
+    </div>
+</form>
    </div>
    <!-- Form End -->
 </div>
