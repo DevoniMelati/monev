@@ -15,9 +15,11 @@ class JenisInovasiController extends Controller
     }
     
     public function read(){
-        $jenisinovasi = DB::table('jenis_inovasi')->orderBy('id','DESC')->get();
+        $jenisinovasi = DB::table('jenis_inovasi')->orderBy('id','ASC')->get(); // ASC agar urut
 
-        return view('admin.jenis_inovasi.index',['jenis_inovasi'=>$jenisinovasi]);
+        return view('admin.jenis_inovasi.index', [
+            'jenis_inovasi' => $jenisinovasi
+        ]);
     }
 
     public function add(){
@@ -25,30 +27,36 @@ class JenisInovasiController extends Controller
     }
 
     public function create(Request $request){
-        DB::table('jenis_inovasi')->insert([  
-            'nama' => $request->nama]);
+         DB::table('jenis_inovasi')->insert([
+        'nama' => $request->nama,
+        'created_at' => now(),
+    ]);
 
-        return redirect('/admin/jenis_inovasi')->with("success","Data Berhasil Ditambah !");
+        return redirect('/admin/jenis_inovasi')->with("success", "Data Berhasil Ditambah !");
     }
 
     public function edit($id){
-        $jenisinovasi = DB::table('jenis_inovasi')->where('id',$id)->first();
-        return view('admin.jenis_inovasi.edit',['jenis_inovasi'=>$jenisinovasi]);
+        $jenisinovasi = DB::table('jenis_inovasi')->where('id', $id)->first();
+        return view('admin.jenis_inovasi.edit', [
+            'jenis_inovasi' => $jenisinovasi
+        ]);
     }
 
     public function update(Request $request, $id) {
-        DB::table('jenis_inovasi')  
-            ->where('id', $id)
-            ->update([
-            'nama' => $request->nama]);
+       DB::table('jenis_inovasi')
+        ->where('id', $id)
+        ->update([
+            'nama' => $request->nama,
+            'updated_at' => now(),
+        ]);
 
-        return redirect('/admin/jenis_inovasi')->with("success","Data Berhasil Diupdate !");
+        return redirect('/admin/jenis_inovasi')->with("success", "Data Berhasil Diupdate !");
     }
 
     public function delete($id)
     {
-        DB::table('jenis_inovasi')->where('id',$id)->delete();
+        DB::table('jenis_inovasi')->where('id', $id)->delete();
 
-        return redirect('/admin/jenis_inovasi')->with("success","Data Berhasil Dihapus !");
+        return redirect('/admin/jenis_inovasi')->with("success", "Data Berhasil Dihapus !");
     }
 }

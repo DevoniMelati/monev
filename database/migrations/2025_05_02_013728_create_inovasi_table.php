@@ -24,8 +24,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_tipe_lisensi_inovasi');
             $table->unsignedBigInteger('id_jenis_inovasi');
 
-            $table->string('unit_pengembang');
-            $table->string('unit_operasional_teknologi');
+            $table->unsignedBigInteger('id_unit_pengembang');
+            $table->unsignedBigInteger('id_opd');
             $table->string('status');
             $table->timestamps();
         });

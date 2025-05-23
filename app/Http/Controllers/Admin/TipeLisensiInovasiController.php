@@ -18,7 +18,7 @@ class TipeLisensiInovasiController extends Controller
         $tipelisensiinovasi = DB::table('tipe_lisensi_inovasi')
         ->join('jenis_inovasi', 'tipe_lisensi_inovasi.id_jenis_inovasi', '=', 'jenis_inovasi.id')
         ->select('tipe_lisensi_inovasi.*', 'jenis_inovasi.nama as jenis_inovasi')
-        ->orderBy('tipe_lisensi_inovasi.id', 'DESC')
+        ->orderBy('tipe_lisensi_inovasi.id', 'ASC') 
         ->get();
 
     return view('admin.tipe_lisensi_inovasi.index', [
@@ -29,18 +29,19 @@ class TipeLisensiInovasiController extends Controller
 
     public function add()
     {
-        $jenisinovasi = DB::table('jenis_inovasi')->orderBy('id', 'DESC')->get();
+        $jenisinovasi = DB::table('jenis_inovasi')->orderBy('id', 'ASC')->get(); 
         return view('admin.tipe_lisensi_inovasi.tambah', [
-            'jenis_inovasi' => $jenisinovasi
-        ]);
+        'jenis_inovasi' => $jenisinovasi
+    ]);
     }
 
     public function create(Request $request)
     {
-        DB::table('tipe_lisensi_inovasi')->insert([
-            'nama' => $request->nama,
-            'id_jenis_inovasi' => $request->id_jenis_inovasi
-        ]);
+         DB::table('tipe_lisensi_inovasi')->insert([
+        'nama' => $request->nama,
+        'id_jenis_inovasi' => $request->id_jenis_inovasi,
+        'created_at' => now(),
+    ]);
 
         return redirect('/admin/tipe_lisensi_inovasi')->with("success", "Data Berhasil Ditambah !");
     }
@@ -58,26 +59,26 @@ class TipeLisensiInovasiController extends Controller
         $tipelisensiinovasi = DB::table('tipe_lisensi_inovasi')->where('id', $id)->first();
         $jenis_inovasiSelect = DB::table('jenis_inovasi')->find($tipelisensiinovasi->id_jenis_inovasi);
         $jenisinovasiAll = DB::table('jenis_inovasi')
-            ->where('id', '!=', $jenis_inovasiSelect->id)
-            ->orderBy('id', 'DESC')
-            ->get();
+        ->where('id', '!=', $jenis_inovasiSelect->id)
+        ->orderBy('id', 'ASC') 
+        ->get();
 
-        return view('admin.tipe_lisensi_inovasi.edit', [
-            'tipe_lisensi_inovasi' => $tipelisensiinovasi,
-            'jenis_inovasiSelect' => $jenis_inovasiSelect,
-            'jenisinovasiAll' => $jenisinovasiAll
-        ]);
+    return view('admin.tipe_lisensi_inovasi.edit', [
+        'tipe_lisensi_inovasi' => $tipelisensiinovasi,
+        'jenis_inovasiSelect' => $jenis_inovasiSelect,
+        'jenisinovasiAll' => $jenisinovasiAll
+    ]);
     }
 
     public function update(Request $request, $id)
     {
         DB::table('tipe_lisensi_inovasi')
-            ->where('id', $id)
-            ->update([
-                'nama' => $request->nama,
-                'id_jenis_inovasi' => $request->id_jenis_inovasi
-            ]);
-
+        ->where('id', $id)
+        ->update([
+            'nama' => $request->nama,
+            'id_jenis_inovasi' => $request->id_jenis_inovasi,
+            'updated_at' => now(),
+        ]);
         return redirect('/admin/tipe_lisensi_inovasi')->with("success", "Data Berhasil Diupdate !");
     }
 

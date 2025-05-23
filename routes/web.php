@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\InovasiController;
 use App\Http\Controllers\Admin\JenisInovasiController;
 use App\Http\Controllers\Admin\TipeLisensiInovasiController;
 use App\Http\Controllers\Admin\DokumenController;
+use App\Http\Controllers\Admin\UnitPengembangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -118,11 +119,24 @@ Route::prefix('admin/tipe_lisensi_inovasi')
     Route::post('/update/{id}', 'update')->name('update');
     Route::get('/delete/{id}', 'delete')->name('delete');
 });
-
+    // Dokumen
 Route::prefix('admin/dokumen')
     ->name('admin.dokumen.')
     ->middleware('cekLevel:1,2,3')
     ->controller(DokumenController::class)
+    ->group(function () {
+        Route::get('/', 'read')->name('read');
+        Route::get('/add', 'add')->name('add');
+        Route::post('/create', 'create')->name('create'); // pastikan ini post dan methodnya create
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/delete/{id}', 'delete')->name('delete');
+});
+    // Unit Pengembang
+Route::prefix('admin/unit_pengembang')
+    ->name('admin.unit_pengembang.')
+    ->middleware('cekLevel:1,2,3')
+    ->controller(UnitPengembangController::class)
     ->group(function () {
         Route::get('/', 'read')->name('read');
         Route::get('/add', 'add')->name('add');

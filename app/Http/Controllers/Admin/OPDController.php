@@ -15,9 +15,8 @@ class OPDController extends Controller
     }
     
     public function read(){
-        $opd = DB::table('opd')->orderBy('id','DESC')->get();
-
-        return view('admin.opd.index',['opd'=>$opd]);
+       $opd = DB::table('opd')->orderBy('id','ASC')->get(); // Urutan dari lama ke baru
+    return view('admin.opd.index', ['opd' => $opd]);
     }
 
     public function add(){
@@ -27,9 +26,10 @@ class OPDController extends Controller
     public function create(Request $request){
         DB::table('opd')->insert([  
             'nama' => $request->nama,
-            'alamat' => $request->alamat,
             'kontak' => $request->kontak,
+            'alamat' => $request->alamat,
             'koordinat' => $request->koordinat,
+            'created_at' => now(),
         ]);
 
 
@@ -44,9 +44,10 @@ class OPDController extends Controller
     public function update(Request $request, $id) {
         DB::table('opd')->where('id', $id)->update([
             'nama' => $request->nama,
-            'alamat' => $request->alamat,
             'kontak' => $request->kontak,
+            'alamat' => $request->alamat,
             'koordinat' => $request->koordinat,
+            'updated_at' => now(),
         ]);
     
         return redirect('/admin/opd')->with("success","Data Berhasil Diupdate !");

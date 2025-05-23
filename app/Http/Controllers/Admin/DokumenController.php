@@ -44,6 +44,7 @@ class DokumenController extends Controller
             'id_inovasi' => 'required|integer',
             'unggah_file' => 'required|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|max:2048',
             'tanggal_upload' => 'required|date',
+            'created_at' => now(),   
         ]);
 
         if ($request->hasFile('unggah_file')) {
@@ -62,6 +63,7 @@ class DokumenController extends Controller
                 'id_inovasi' => $request->id_inovasi,
                 'unggah_file' => $filename,
                 'tanggal_upload' => $request->tanggal_upload,
+                'created_at' => now(),   
             ]);
 
             return redirect('/admin/dokumen')->with('success', 'Data berhasil ditambahkan!');
@@ -88,6 +90,7 @@ class DokumenController extends Controller
             'id_inovasi' => 'required|integer',
             'tanggal_upload' => 'required|date',
             'unggah_file' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|max:2048',
+            'updated_at' => now(),
         ]);
 
         $dokumen = DB::table('dokumen')->where('id', $id)->first();
@@ -120,6 +123,7 @@ class DokumenController extends Controller
             'id_inovasi' => $request->id_inovasi,
             'unggah_file' => $filename,
             'tanggal_upload' => $request->tanggal_upload,
+            'updated_at' => now(),  
         ]);
 
         return redirect('/admin/dokumen')->with('success', 'Data berhasil diupdate!');

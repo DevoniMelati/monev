@@ -40,22 +40,28 @@
                <input type="text" name="nama" required autofocus class="form-control" placeholder="Masukkan Nama OPD .....">
             </div>
             <div class="col-md-6 mb-3">
-               <label>Alamat</label>
-               <input type="text" name="alamat" required class="form-control" placeholder="Masukkan Alamat .....">
-            </div>
-          <div class="col-md-6 mb-3">
                <label>Kontak</label>
                <input type="text" name="kontak" required class="form-control" placeholder="Masukkan Kontak .....">
+            </div>
+          <div class="col-md-6 mb-3">
+               <label>Alamat</label>
+               <input type="text" name="alamat" required class="form-control" placeholder="Masukkan Alamat .....">
             </div>
             <div class="col-md-6 mb-3">
                <label>Koordinat</label>
                <input type="text" name="koordinat" required class="form-control" placeholder="Masukkan Koordinat .....">
             </div>
-</div>
-       <button type="submit" class="btn btn-primary">
-                <i class="ti-save"></i> Tambah Data
-            </button>
-        </form>
+         <div class="col-md-6">
+        <button type="submit" class="btn btn-primary mt-1">
+            <i class="icon-copy ti-save"></i> Tambah Data
+        </button>
     </div>
+</form>
+   </div>
+   <!-- Form End -->
 </div>
+
+<!-- Tambahkan margin bawah untuk memberi jarak dari footer -->
+<div style="margin-bottom: 25px;"></div>
 @endsection
+

@@ -61,7 +61,7 @@
             <th class="align-center">Tipe Lisensi Inovasi</th>
             <th class="align-center">Jenis Inovasi</th>
             <th class="align-center">Unit Pengembang</th>
-            <th class="align-center">Unit Operasional Teknologi</th>
+            <th class="align-center">OPD</th>
             <th class="align-center">Status</th>
             <th class="table-plus datatable-nosort text-center align-center">Action</th>
         </tr>
@@ -75,10 +75,10 @@
             <td>{{$data->url}}</td>
             <td>{{$data->uraian_inovasi}}</td>
             <td>{{$data->basis_inovasi}}</td>
-            <td>{{$data->tipe}}</td>  <!-- Perhatikan ini -->
-            <td>{{$data->jenis}}</td> <!-- Dan ini -->
+            <td>{{$data->tipe_lisensi_inovasi}}</td>  
+            <td>{{$data->jenis_inovasi}}</td> 
             <td>{{$data->unit_pengembang}}</td>
-            <td>{{$data->unit_operasional_teknologi}}</td>
+            <td>{{$data->opd}}</td>
             <td class="text-center">
                 @if(strtolower($data->status) == 'aktif')
                 <span 

@@ -40,18 +40,18 @@
                       value="{{ old('nama', $opd->nama) }}">
             </div>
             <div class="col-md-6 mb-3">
-               <label>Alamat</label>
-               <input type="text" name="alamat" required class="form-control" 
-                      placeholder="Masukkan Alamat ....."
-                      value="{{ old('alamat', $opd->alamat) }}">
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-6 mb-3">
                <label>Kontak</label>
                <input type="text" name="kontak" required class="form-control" 
                       placeholder="Masukkan Kontak ....."
                       value="{{ old('kontak', $opd->kontak) }}">
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-6 mb-3">
+               <label>Alamat</label>
+               <input type="text" name="alamat" required class="form-control" 
+                      placeholder="Masukkan Alamat ....."
+                      value="{{ old('alamat', $opd->alamat) }}">
             </div>
             <div class="col-md-6 mb-3">
                <label>Koordinat</label>
@@ -59,19 +59,16 @@
                       placeholder="Masukkan Koordinat ....."
                       value="{{ old('koordinat', $opd->koordinat) }}">
             </div>
-         </div>
-         <div class="row">
-            <div class="col-md-6 text-left">
-               <button type="submit" class="btn btn-primary mt-1">
-                   <span class="icon-copy ti-save"></span> Update Data
-               </button>
-            </div>
-         </div>
-      </form>
-      <!-- Form End -->
+         <div class="col-md-6">
+        <button type="submit" class="btn btn-primary mt-1">
+            <i class="icon-copy ti-save"></i> Update Data
+        </button>
+    </div>
+</form>
    </div>
-
-   <!-- Tambahkan margin bawah untuk memberi jarak dari footer -->
-   <div style="margin-bottom: 25px;"></div>
+   <!-- Form End -->
 </div>
+
+<!-- Tambahkan margin bawah untuk memberi jarak dari footer -->
+<div style="margin-bottom: 25px;"></div>
 @endsection

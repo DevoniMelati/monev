@@ -372,6 +372,7 @@
 							<ul class="submenu">
 								<li><a href="/admin/jenis_inovasi" class="@if ($activePage == 'jenis_inovasi') active @endif">Data Jenis Inovasi</a></li>
 								<li><a href="/admin/tipe_lisensi_inovasi" class="@if ($activePage == 'tipe_lisensi_inovasi') active @endif">Data Tipe Lisensi Inovasi</a></li>
+								<li><a href="/admin/unit_pengembang" class="@if ($activePage == 'unit_pengembang') active @endif">Data Unit Pengembang</a></li>
 							</ul>
 						</li>
 						<li>
@@ -390,8 +391,8 @@
 							</a>
 						</li>
 						<li>
-						<a href="/admin/dokumen" class="dropdown-toggle no-arrow @if ($activePage == 'inovasi') active @endif">
-								<span class="micon dw dw-notepad-2"></span><span class="mtext">Data Dokumen</span>
+						<a href="/admin/dokumen" class="dropdown-toggle no-arrow @if ($activePage == 'dokumen') active @endif">
+								<span class="micon dw dw-file"></span><span class="mtext">Data Dokumen</span>
 							</a>
 						</li>
 					</ul>
