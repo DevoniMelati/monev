@@ -37,7 +37,7 @@ Route::get('/clear', function() {
 });
 
 Route::get('/', function () {
-    return view('home');
+    return view('auth.login');
 });
 
 // Authentication
