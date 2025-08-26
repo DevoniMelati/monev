@@ -16,14 +16,14 @@ RUN apt-get update && apt-get upgrade -y && \
     libfreetype6-dev \
     libxml2-dev \
     libzip-dev \
-    libpq-dev \
     libicu-dev \
     pkg-config \
     g++ \
     zlib1g-dev \
     libgd-dev \
     build-essential \
-    libonig-dev && \
+    libonig-dev \
+    default-mysql-client && \
     docker-php-source extract && \
     rm -rf /var/lib/apt/lists/*
 
