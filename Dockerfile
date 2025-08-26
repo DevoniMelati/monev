@@ -82,12 +82,15 @@ RUN if [ -f public/build/.vite/manifest.json ]; then \
     cp public/build/.vite/manifest.json public/build/manifest.json; \
 fi
 
-# --- 15. Set proper permissions ---
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
-    chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache && \
-    mkdir -p /var/www/html/public/assets-foto/price_list && \
-    chown -R www-data:www-data /var/www/html/public/assets-foto && \
-    chmod -R 775 /var/www/html/public/assets-foto
+# --- 15. Create directories and set proper permissions ---
+RUN mkdir -p /var/www/html/storage/logs \
+    /var/www/html/storage/framework/sessions \
+    /var/www/html/storage/framework/views \
+    /var/www/html/storage/framework/cache \
+    /var/www/html/bootstrap/cache \
+    /var/www/html/public/assets-foto/price_list && \
+    chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public/assets-foto && \
+    chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public/assets-foto
 
 # --- 16. Expose port ---
 EXPOSE $PORT
@@ -116,27 +119,92 @@ fi
 chown www-data:www-data .env
 chmod 664 .env
 
+# Pastikan direktori storage dan log exists dengan permission yang benar
+mkdir -p storage/logs storage/framework/sessions storage/framework/views storage/framework/cache
+chown -R www-data:www-data storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache
+
+# Create empty log file jika belum ada
+touch storage/logs/laravel.log
+chown www-data:www-data storage/logs/laravel.log
+chmod 664 storage/logs/laravel.log
+
+# Configure database environment variables dari Railway MySQL
+if [ ! -z "\$MYSQL_URL" ]; then
+    echo "Configuring MySQL database from MYSQL_URL..."
+    # Parse MYSQL_URL format: mysql://user:pass@host:port/dbname
+    DB_FULL=\$(echo \$MYSQL_URL | sed 's/.*:\/\///')
+    DB_USER=\$(echo \$DB_FULL | cut -d: -f1)
+    DB_PASS=\$(echo \$DB_FULL | cut -d: -f2 | cut -d@ -f1)
+    DB_HOST=\$(echo \$DB_FULL | cut -d@ -f2 | cut -d: -f1)
+    DB_PORT=\$(echo \$DB_FULL | cut -d: -f3 | cut -d\/ -f1)
+    DB_NAME=\$(echo \$DB_FULL | cut -d\/ -f2)
+    
+    # Update .env dengan database config
+    sed -i "s/DB_CONNECTION=.*/DB_CONNECTION=mysql/" .env
+    sed -i "s/DB_HOST=.*/DB_HOST=\$DB_HOST/" .env
+    sed -i "s/DB_PORT=.*/DB_PORT=\$DB_PORT/" .env
+    sed -i "s/DB_DATABASE=.*/DB_DATABASE=\$DB_NAME/" .env
+    sed -i "s/DB_USERNAME=.*/DB_USERNAME=\$DB_USER/" .env
+    sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=\$DB_PASS/" .env
+elif [ ! -z "\$DATABASE_URL" ]; then
+    echo "Configuring database from DATABASE_URL..."
+    # Parse DATABASE_URL format: mysql://user:pass@host:port/dbname
+    DB_FULL=\$(echo \$DATABASE_URL | sed 's/.*:\/\///')
+    DB_USER=\$(echo \$DB_FULL | cut -d: -f1)
+    DB_PASS=\$(echo \$DB_FULL | cut -d: -f2 | cut -d@ -f1)
+    DB_HOST=\$(echo \$DB_FULL | cut -d@ -f2 | cut -d: -f1)
+    DB_PORT=\$(echo \$DB_FULL | cut -d: -f3 | cut -d\/ -f1)
+    DB_NAME=\$(echo \$DB_FULL | cut -d\/ -f2)
+    
+    # Update .env dengan database config
+    sed -i "s/DB_CONNECTION=.*/DB_CONNECTION=mysql/" .env
+    sed -i "s/DB_HOST=.*/DB_HOST=\$DB_HOST/" .env
+    sed -i "s/DB_PORT=.*/DB_PORT=\$DB_PORT/" .env
+    sed -i "s/DB_DATABASE=.*/DB_DATABASE=\$DB_NAME/" .env
+    sed -i "s/DB_USERNAME=.*/DB_USERNAME=\$DB_USER/" .env
+    sed -i "s/DB_PASSWORD=.*/DB_PASSWORD=\$DB_PASS/" .env
+fi
+
+# Set other environment variables
+if [ ! -z "\$APP_URL" ]; then
+    sed -i "s|APP_URL=.*|APP_URL=\$APP_URL|" .env
+fi
+
 # Generate APP_KEY jika belum ada
 php artisan key:generate --no-interaction --force || true
-
-# Buat session table jika belum ada
-php artisan session:table --no-interaction || true
 
 # Clear caches
 php artisan config:clear --no-interaction || true
 php artisan route:clear --no-interaction || true
 php artisan view:clear --no-interaction || true
+php artisan cache:clear --no-interaction || true
 
-# Test database connection
-echo "Testing database connection..."
-php artisan migrate:status || echo "Migration status check failed, proceeding anyway..."
+# Wait for database to be ready
+echo "Waiting for database connection..."
+for i in {1..30}; do
+    if php artisan migrate:status > /dev/null 2>&1; then
+        echo "Database connection established!"
+        break
+    else
+        echo "Waiting for database... (\$i/30)"
+        sleep 2
+    fi
+    if [ \$i -eq 30 ]; then
+        echo "Warning: Database connection timeout, but continuing..."
+    fi
+done
 
-# Jalankan semua migration
+# Jalankan migration
 echo "Running database migrations..."
 php artisan migrate --force --no-interaction || echo "Migration failed, continuing..."
 
 # Create storage symlink
 php artisan storage:link --no-interaction || true
+
+# Final permission check
+chown -R www-data:www-data storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache
 
 echo "Starting Apache on port \$PORT..."
 exec apache2-foreground
