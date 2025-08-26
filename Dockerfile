@@ -28,7 +28,7 @@ RUN apt-get update && apt-get upgrade -y && \
     rm -rf /var/lib/apt/lists/*
 
 # --- 2. Install PHP extensions ---
-RUN docker-php-ext-install pdo pdo_pgsql pgsql mbstring exif pcntl bcmath zip
+RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath zip
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
 RUN docker-php-ext-configure intl
