@@ -7,7 +7,7 @@
       <div class="row">
          <div class="col-md-6 col-sm-12">
             <div class="title">
-               <h4>Data Account</h4>
+               <h4>Data Account </h4>
             </div>
             <nav aria-label="breadcrumb" role="navigation">
                <ol class="breadcrumb">
@@ -22,7 +22,7 @@
    <div class="pd-20 card-box mb-30">
       <div class="clearfix">
          <div class="pull-left">
-            <h2 class="text-primary h2"><i class="icon-copy dw dw-list"></i> List Data Account</h2>
+            <h2 class="text-primary h2"><i class="icon-copy dw dw-list"></i> List Data User</h2>
          </div>
          <div class="pull-right">
             <a href="/admin/account/add" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Tambah Data</a>
@@ -49,9 +49,9 @@
          <thead class="bg-primary text-white">
             <tr>
                <th width="5%" >No</th>
-               <th>Nama Account</th>
-               <th>Username Account</th>
-               <th class="text-center">Type account</th>
+               <th>Nama</th>
+               <th>Username</th>
+               <th class="text-center">Type User</th>
                <th class="table-plus datatable-nosort text-center">Action</th>
             </tr>
          </thead>
@@ -63,13 +63,12 @@
                <td>{{$data->name}}</td>
                <td>{{$data->username}}</td>
                <td class="text-center">
-                  @if($data->level == '2')
-                     <button class="btn btn-primary btn-xs">Penanggung Jawab Inovasi</button>
-                  @elseif($data->level == '3')
-                     <button class="btn btn-info btn-xs">Programmer</button>
-                  @elseif($data->level == '4')
-                     <button class="btn btn-success btn-xs">Pimpinan</button>
-                  
+                  @if($data->level == '1')
+                     <button class="btn btn-primary btn-xs">Admin</button>
+                  @elseif($data->level == '2')
+                     <button class="btn btn-info btn-xs">Pegawai</button>
+                     @elseif($data->level == '3')
+                     <button class="btn btn-info btn-xs">Pimpinan</button>
                   @endif
                   
                </td>
@@ -103,6 +102,10 @@
             <div class="form-group" style="font-size: 17px;">
                <label for="exampleInputUsername1">Username account</label>
                <input class="form-control" value="{{$data->username}}" readonly style="background-color: white;pointer-events: none;">
+            </div>
+            <div class="form-group" style="font-size: 17px;">
+               <label for="exampleInputUsername1">Password Baru</label>
+               <input class="form-control" value="Monev2025" readonly style="background-color: white;pointer-events: none;">
             </div>
             <div class="row mt-4">
                <div class="col-md-6">

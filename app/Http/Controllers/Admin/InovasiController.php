@@ -66,7 +66,7 @@ class InovasiController extends Controller
         'id_unit_pengembang' => $request->id_unit_pengembang,
         'id_opd' => $request->id_opd,
         'status' => $request->status,
-        'created_at' => now(),   // tambahkan ini
+        'created_at' => now(),   
     ]);
 
         return redirect('/admin/inovasi')->with("success", "Data Berhasil Ditambah!");
@@ -116,4 +116,24 @@ class InovasiController extends Controller
 
         return redirect('/admin/inovasi')->with("success", "Data Berhasil Dihapus!");
     }
+    public function statusToggle($id)
+    {
+        $inovasi = DB::table('inovasi')->where('id', $id)->first();
+
+        if (!$inovasi) {
+            return redirect('/admin/inovasi')->with('error', 'Data tidak ditemukan!');
+        }
+
+        $newStatus = strtolower($inovasi->status) === 'aktif' ? 'Tidak Aktif' : 'Aktif';
+
+        DB::table('inovasi')->where('id', $id)->update([
+            'status' => $newStatus,
+            'updated_at' => now()
+        ]);
+
+        return redirect('/admin/inovasi')->with('success', 'Status berhasil diperbarui!');
+    }
 }
+
+
+

@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\JenisInovasiController;
 use App\Http\Controllers\Admin\TipeLisensiInovasiController;
 use App\Http\Controllers\Admin\DokumenController;
 use App\Http\Controllers\Admin\UnitPengembangController;
+use App\Http\Controllers\Admin\MonitoringController;
+use App\Http\Controllers\Admin\RekapanController;
+use App\Http\Controllers\Admin\LaporanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +37,7 @@ Route::get('/clear', function() {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 // Authentication
@@ -52,7 +55,7 @@ Route::post('/admin/change_password', [HomeController::class, 'change_password']
 // OPD
 Route::prefix('admin/opd')
     ->name('admin.opd.')
-    ->middleware('cekLevel:1,2,3')
+    ->middleware('cekLevel:1 2 3')
     ->controller(OPDController::class)
     ->group(function () {
         Route::get('/', 'read')->name('read');
@@ -66,7 +69,7 @@ Route::prefix('admin/opd')
 // Account
 Route::prefix('admin/account')
     ->name('admin.account.')
-    ->middleware('cekLevel:1,2,3')
+    ->middleware('cekLevel:1 2 3')
     ->controller(AccountController::class)
     ->group(function () {
         Route::get('/', 'read')->name('read');
@@ -81,7 +84,7 @@ Route::prefix('admin/account')
 // Inovasi
 Route::prefix('admin/inovasi')
     ->name('admin.inovasi.')
-    ->middleware('cekLevel:1,2,3')
+    ->middleware('cekLevel:1 2 3')
     ->controller(InovasiController::class)
     ->group(function () {
         Route::get('/', 'read')->name('read');
@@ -95,7 +98,7 @@ Route::prefix('admin/inovasi')
 // Jenis Inovasi
 Route::prefix('admin/jenis_inovasi')
     ->name('admin.jenis_inovasi.')
-    ->middleware('cekLevel:1,2,3')
+    ->middleware('cekLevel:1 2 3')
     ->controller(JenisInovasiController::class)
     ->group(function () {
         Route::get('/', 'read')->name('read');
@@ -109,7 +112,7 @@ Route::prefix('admin/jenis_inovasi')
     // Tipe Lisensi Inovasi
 Route::prefix('admin/tipe_lisensi_inovasi')
     ->name('admin.tipe_lisensi_inovasi.')
-    ->middleware('cekLevel:1,2,3')
+    ->middleware('cekLevel:1 2 3')
     ->controller(TipeLisensiInovasiController::class)
     ->group(function () {
     Route::get('/', 'read')->name('read');
@@ -122,12 +125,12 @@ Route::prefix('admin/tipe_lisensi_inovasi')
     // Dokumen
 Route::prefix('admin/dokumen')
     ->name('admin.dokumen.')
-    ->middleware('cekLevel:1,2,3')
+    ->middleware('cekLevel:1 2 3')
     ->controller(DokumenController::class)
     ->group(function () {
         Route::get('/', 'read')->name('read');
         Route::get('/add', 'add')->name('add');
-        Route::post('/create', 'create')->name('create'); // pastikan ini post dan methodnya create
+        Route::post('/create', 'create')->name('create'); 
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::post('/update/{id}', 'update')->name('update');
         Route::get('/delete/{id}', 'delete')->name('delete');
@@ -135,13 +138,43 @@ Route::prefix('admin/dokumen')
     // Unit Pengembang
 Route::prefix('admin/unit_pengembang')
     ->name('admin.unit_pengembang.')
-    ->middleware('cekLevel:1,2,3')
+    ->middleware('cekLevel:1 2 3')
     ->controller(UnitPengembangController::class)
     ->group(function () {
         Route::get('/', 'read')->name('read');
         Route::get('/add', 'add')->name('add');
-        Route::post('/create', 'create')->name('create'); // pastikan ini post dan methodnya create
+        Route::post('/create', 'create')->name('create'); 
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::post('/update/{id}', 'update')->name('update');
         Route::get('/delete/{id}', 'delete')->name('delete');
 });
+// Monitoring
+Route::put('/admin/inovasi/status-toggle/{id}', [InovasiController::class, 'statusToggle']);
+Route::prefix('admin/monitoring')
+    ->name('admin.monitoring.')
+    ->middleware('cekLevel:1 2 3')
+    ->controller(MonitoringController::class)
+    ->group(function () {
+        Route::get('/', 'read')->name('read');
+        Route::get('/add', 'add')->name('add');
+        Route::post('/create', 'create')->name('create'); 
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/delete/{id}', 'delete')->name('delete');
+        
+});
+
+// Laporan
+Route::prefix('admin/laporan')
+    ->name('admin.laporan.')
+    ->middleware('cekLevel:1 2 3')
+    ->controller(LaporanController::class)
+    ->group(function () {
+        Route::get('/', 'read')->name('read');
+        Route::get('/add', 'add')->name('add');
+        Route::get('/cetak', 'cetak')->name('cetak');
+        Route::post('/create', 'create')->name('create');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/delete/{id}', 'delete')->name('delete');
+    });

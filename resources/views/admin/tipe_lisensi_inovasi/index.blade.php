@@ -86,6 +86,11 @@
                <label for="exampleInputUsername1">Nama Tipe Lisensi Inovasi</label>
                <input class="form-control" value="{{$data->nama}}" readonly style="background-color: white;pointer-events: none;">
             </div>
+
+            <div class="form-group" style="font-size: 17px;">
+               <label for="exampleInputUsername1">Nama Jenis Inovasi</label>
+               <input class="form-control" value="{{$data->nama}}" readonly style="background-color: white;pointer-events: none;">
+            </div>
             <div class="row mt-4">
                <div class="col-md-6">
                   <a href="/admin/tipe_lisensi_inovasi/delete/{{$data->id}}" style="text-decoration: none;">

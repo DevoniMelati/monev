@@ -37,21 +37,6 @@
        @csrf
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label>Nama File</label>
-                    <input type="text" name="nama_file" required class="form-control" value="{{ old('nama_file') }}" placeholder="Masukkan nama File">
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label>Unggah File</label>
-                    <input type="file" name="unggah_file" required class="form-control">
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label>Tanggal Upload</label>
-                    <input type="date" name="tanggal_upload" required class="form-control" value="{{ old('tanggal_upload') }}">
-                </div>
-
-                <div class="col-md-6 mb-3">
                     <label>Nama Inovasi</label>
                     <select name="id_inovasi" class="form-control" required>
                         <option value="">-- Pilih Inovasi --</option>
@@ -62,8 +47,21 @@
                         @endforeach
                     </select>
                 </div>
-            </div>
 
+                <div class="col-md-6 mb-3">
+                    <label>Nama File</label>
+                    <input type="text" name="nama_file" required class="form-control" value="{{ old('nama_file') }}" placeholder="Masukkan Nama File">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Unggah File</label>
+                    <input type="file" name="unggah_file" required class="form-control">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Tanggal Upload</label>
+                    <input type="date" name="tanggal_upload" required class="form-control" value="{{ old('tanggal_upload') }}">
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary">
                 <i class="ti-save"></i> Tambah Data
             </button>

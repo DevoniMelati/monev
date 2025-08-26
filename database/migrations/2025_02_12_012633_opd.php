@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('nama');
             $table->string('kontak')->nullable();
             $table->string('alamat')->nullable();
-            $table->string('koordinat')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('NULL ON UPDATE CURRENT_TIMESTAMP'))->nullable();
         });

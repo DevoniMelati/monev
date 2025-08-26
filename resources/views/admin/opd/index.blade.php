@@ -52,7 +52,6 @@
                <th>Nama OPD</th>
                <th>Kontak</th>
                <th>Alamat</th>
-               <th>Koordinat</th>
                <th class="table-plus datatable-nosort text-center">Action</th>
             </tr>
          </thead>
@@ -64,7 +63,6 @@
                <td>{{$data->nama}}</td>
                <td>{{$data->kontak}}</td>
                <td>{{$data->alamat}}</td>
-               <td>{{$data->koordinat}}</td>
                <td class="text-center" width="15%">
                <a href="/admin/opd/edit/{{$data->id}}"><button class="btn btn-success btn-xs"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Edit Data"></i></button></a>
                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#data-{{$data->id}}"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete Data"></i></button>

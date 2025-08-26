@@ -28,7 +28,6 @@ class OPDController extends Controller
             'nama' => $request->nama,
             'kontak' => $request->kontak,
             'alamat' => $request->alamat,
-            'koordinat' => $request->koordinat,
             'created_at' => now(),
         ]);
 
@@ -46,7 +45,6 @@ class OPDController extends Controller
             'nama' => $request->nama,
             'kontak' => $request->kontak,
             'alamat' => $request->alamat,
-            'koordinat' => $request->koordinat,
             'updated_at' => now(),
         ]);
     

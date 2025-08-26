@@ -115,17 +115,18 @@
 	<body>
 		@if ($activePage == 'dashboard')
 		<div class="pre-loader">
-			<div class="pre-loader-box">
-				<div class="loader-logo">
-					<img src="{{url('assets-admin')}}/vendors/images/emonev.svg" alt="" />
-				</div>
-				<div class="loader-progress" id="progress_div">
-					<div class="bar" id="bar1"></div>
-				</div>
-				<div class="percent" id="percent1">0%</div>
-				<div class="loading-text">Loading...</div>
-			</div>
-		</div>
+  <div class="pre-loader-box">
+    <div class="loader-logo">
+      <img src="{{url('assets-admin')}}/vendors/images/monevv.png" alt="" />
+    </div>
+    <div class="loader-progress" id="progress_div">
+      <div class="bar" id="bar1" style="background-color:rgb(15, 148, 192);"></div>
+    </div>
+    <div class="percent" id="percent1">0%</div>
+    <div class="loading-text">Loading...</div>
+  </div>
+</div>
+
 		@endif
 
 		<div class="header">
@@ -346,9 +347,9 @@
 		<div class="left-side-bar">
 			<div class="brand-logo">
 				<a href="/">
-					<img src="{{url('assets-admin')}}/vendors/images/emonev.svg" alt="" class="dark-logo" />
+					<img src="{{url('assets-admin')}}/vendors/images/monevv.png" alt="" class="dark-logo" />
 					<img
-						src="{{url('assets-admin')}}/vendors/images/emonev-white.svg"
+						src="{{url('assets-admin')}}/vendors/images/monevv.png"
 						alt=""
 						class="light-logo"
 					/>
@@ -357,6 +358,7 @@
 					<i class="ion-close-round"></i>
 				</div>
 			</div>
+			@if(Auth::user()->level == 1)
 			<div class="menu-block customscroll">
 				<div class="sidebar-menu">
 					<ul id="accordion-menu">
@@ -367,7 +369,7 @@
 						</li>
 						<li class="dropdown">
 							<a href="javascript:;" class="dropdown-toggle">
-								<span class="micon dw dw-file"></span><span class="mtext">Data Master</span>
+								<span class="micon dw dw-layers"></span><span class="mtext">Data Master</span>
 							</a>
 							<ul class="submenu">
 								<li><a href="/admin/jenis_inovasi" class="@if ($activePage == 'jenis_inovasi') active @endif">Data Jenis Inovasi</a></li>
@@ -382,9 +384,44 @@
 						</li>
 						<li>
 							<a href="/admin/account" class="dropdown-toggle no-arrow @if ($activePage == 'account') active @endif">
-								<span class="micon dw dw-user1"></span><span class="mtext">Data Account</span>
+								<span class="micon dw dw-user1"></span><span class="mtext">User</span>
 							</a>
 						</li>
+						<li>
+							<a href="/admin/inovasi" class="dropdown-toggle no-arrow @if ($activePage == 'inovasi') active @endif">
+								<span class="micon dw dw-notepad-2"></span><span class="mtext">Data Inovasi</span>
+							</a>
+						</li>
+						<li>
+						<a href="/admin/dokumen" class="dropdown-toggle no-arrow @if ($activePage == 'dokumen') active @endif">
+								<span class="micon dw dw-file"></span><span class="mtext">Data Dokumen</span>
+							</a>
+						</li>
+						<li>
+						<a href="/admin/monitoring" class="dropdown-toggle no-arrow @if ($activePage == 'monitoring') active @endif">
+								<span class="micon dw dw-analytics"></span><span class="mtext">Data Monitoring</span>
+							</a>
+						</li>
+						
+						<li>
+						<a href="/admin/laporan" class="dropdown-toggle no-arrow @if ($activePage == 'laporan') active @endif">
+								<span class="micon dw dw-bar-chart"></span><span class="mtext">Data Laporan</span>
+							</a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+			@elseif (Auth::user()->level == 2)
+			<div class="menu-block customscroll">
+				<div class="sidebar-menu">
+					<ul id="accordion-menu">
+						<li>
+							<a href="/admin/home" class="dropdown-toggle no-arrow @if ($activePage == 'dashboard') active @endif">
+								<span class="micon bi bi-house"></span><span class="mtext">Dashboard</span>
+							</a>
+						</li>
+						<li>
 						<li>
 							<a href="/admin/inovasi" class="dropdown-toggle no-arrow @if ($activePage == 'inovasi') active @endif">
 								<span class="micon dw dw-notepad-2"></span><span class="mtext">Data Inovasi</span>
@@ -398,6 +435,25 @@
 					</ul>
 				</div>
 			</div>
+			@elseif (Auth::user()->level == 3)
+			<div class="menu-block customscroll">
+				<div class="sidebar-menu">
+					<ul id="accordion-menu">
+						<li>
+							<a href="/admin/home" class="dropdown-toggle no-arrow @if ($activePage == 'dashboard') active @endif">
+								<span class="micon bi bi-house"></span><span class="mtext">Dashboard</span>
+							</a>
+						</li>
+						<li>
+						<li>
+						<a href="/admin/laporan" class="dropdown-toggle no-arrow @if ($activePage == 'laporan') active @endif">
+								<span class="micon dw dw-bar-chart"></span><span class="mtext">Data Laporan</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			@endif
 		</div>
 		<div class="mobile-menu-overlay"></div>
 

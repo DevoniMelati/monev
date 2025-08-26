@@ -27,7 +27,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_unit_pengembang');
             $table->unsignedBigInteger('id_opd');
             $table->string('status');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->default(DB::raw('NULL ON UPDATE CURRENT_TIMESTAMP'))->nullable();
         });
     }
 

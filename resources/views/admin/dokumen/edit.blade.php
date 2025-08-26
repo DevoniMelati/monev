@@ -37,7 +37,18 @@
        <form action="/admin/dokumen/update/{{ $dokumen->id }}" method="POST" enctype="multipart/form-data">
             @csrf
            <div class="row mb-3">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-3">
+                    <label>Nama Inovasi</label>
+                    <select name="id_inovasi" class="form-control" required>
+                <option value="">-- Pilih Inovasi --</option>
+                 @foreach($inovasiAll as $inovasi)
+                <option value="{{ $inovasi->id }}" {{ $dokumen->id_inovasi == $inovasi->id ? 'selected' : '' }}>
+                 {{ $inovasi->nama }}
+                 </option>
+                @endforeach
+                </select>
+                </div>
+            <div class="col-md-6">
                 <label>Nama File</label>
                 <input type="text" name="nama_file" class="form-control" required value="{{ old('nama_file', $dokumen->nama_file ?? '') }}">
             </div>
@@ -53,20 +64,7 @@
                     <input type="date" name="tanggal_upload" required class="form-control"
                         value="{{ old('tanggal_upload', $dokumen->tanggal_upload) }}">
                 </div>
-
-                <div class="col-md-6 mb-3">
-                    <label>Nama Inovasi</label>
-                    <select name="id_inovasi" class="form-control" required>
-                <option value="">-- Pilih Inovasi --</option>
-                 @foreach($inovasiAll as $inovasi)
-                <option value="{{ $inovasi->id }}" {{ $dokumen->id_inovasi == $inovasi->id ? 'selected' : '' }}>
-                 {{ $inovasi->nama }}
-                 </option>
-                @endforeach
-                </select>
-                </div>
             </div>
-
             <button type="submit" class="btn btn-primary">
                 <i class="ti-save"></i> Update Data
             </button>

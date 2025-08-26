@@ -47,10 +47,6 @@
                <label>Alamat</label>
                <input type="text" name="alamat" required class="form-control" placeholder="Masukkan Alamat .....">
             </div>
-            <div class="col-md-6 mb-3">
-               <label>Koordinat</label>
-               <input type="text" name="koordinat" required class="form-control" placeholder="Masukkan Koordinat .....">
-            </div>
          <div class="col-md-6">
         <button type="submit" class="btn btn-primary mt-1">
             <i class="icon-copy ti-save"></i> Tambah Data

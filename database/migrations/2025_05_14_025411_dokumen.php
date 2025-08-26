@@ -10,11 +10,12 @@ return new class extends Migration
     {
         Schema::create('dokumen', function (Blueprint $table) {
          $table->id();
-         $table->string('nama_file'); // ← ini contoh kolom yang mungkin ada
          $table->unsignedBigInteger('id_inovasi');
+         $table->string('nama_file');
          $table->string('unggah_file');
          $table->date('tanggal_upload');
-         $table->timestamps();
+         $table->timestamp('created_at')->useCurrent();
+         $table->timestamp('updated_at')->default(DB::raw('NULL ON UPDATE CURRENT_TIMESTAMP'))->nullable();
 });
     }
 

@@ -4,7 +4,7 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Login SI Nova Padang Panjang</title>
+	<title>Login E-MONEV Padang Panjang</title>
 
 	<!-- Site favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="{{url('assets-admin')}}/vendors/images/apple-touch-icon.png">
@@ -26,7 +26,7 @@
 		<div class="container-fluid d-flex justify-content-between align-items-center">
 			<div class="brand-logo">
 				<a href="/">
-					<img src="{{url('assets-admin')}}/vendors/images/emonev.svg" alt="">
+					<img src="{{url('assets-admin')}}/vendors/images/monev.png" alt="">
 				</a>
 			</div>
 		</div>
@@ -34,9 +34,9 @@
 	<div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
 		<div class="container">
 			<div class="row align-items-center">
-				<div class="col-md-6 col-lg-7">
-					<img src="{{url('assets-admin')}}/vendors/images/login-page-img.png" alt="">
-				</div>
+    <div class="col-md-6 col-lg-5 offset-lg-1">
+        <img src="{{ url('assets-admin') }}/vendors/images/login.png" alt="" class="img-fluid">
+    </div>
 				<div class="col-md-6 col-lg-5">
 					<div class="login-box bg-white box-shadow border-radius-10">
 						<div class="login-title">

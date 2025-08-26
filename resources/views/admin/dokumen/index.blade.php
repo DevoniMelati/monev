@@ -25,9 +25,12 @@
          <div class="pull-left">
             <h2 class="text-primary h2"><i class="icon-copy dw dw-list"></i> List Data Dokumen</h2>
          </div>
+
+           @if(Auth::user()->level  == 2)
          <div class="pull-right">
             <a href="/admin/dokumen/add" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Tambah Data</a>
          </div>
+         @endif
       </div>
       <hr>
 
@@ -53,19 +56,21 @@
          <thead class="bg-primary text-white">
             <tr>
                <th width="5%">No</th>
-               <th>Nama File</th>
                <th>Nama Inovasi</th>
+               <th>Nama File</th>
                <th>Unggah File</th>
                <th>Tanggal Upload</th>
+               @if(Auth::user()->level == 2)
                <th class="text-center">Action</th>
+                @endif
             </tr>
          </thead>
          <tbody>
             @foreach($dokumen as $index => $data)
             <tr>
                <td class="text-center">{{ $index + 1 }}</td>
-               <td>{{ $data->nama_file }}</td>
-               <td>{{ $data->nama_inovasi ?? '-' }}</td>
+               <td>{{ $data->nama_inovasi }}</td>
+               <td>{{ $data->nama_file ?? '-' }}</td>
                <td>
                   @if($data->unggah_file)
                      <a href="{{ asset('uploads/dokumen/' . $data->unggah_file) }}" target="_blank">
@@ -75,7 +80,9 @@
                      -
                   @endif
                </td>
-               <td>{{ \Carbon\Carbon::parse($data->tanggal_upload)->format('d-m-Y') }}</td>
+              <td>{{ \Carbon\Carbon::parse($data->tanggal_upload)->translatedFormat('d F Y') }}</td>
+
+               @if(Auth::user()->level == 2)
                <td class="text-center">
                   <a href="/admin/dokumen/edit/{{ $data->id }}" class="btn btn-success btn-xs">
                      <i class="fa fa-edit" data-toggle="tooltip" title="Edit Data"></i>
@@ -84,6 +91,7 @@
                      <i class="fa fa-trash" data-toggle="tooltip" title="Delete Data"></i>
                   </button>
                </td>
+              @endif
             </tr>
             @endforeach
          </tbody>
@@ -100,12 +108,12 @@
             <h5 class="text-center font-weight-bold">Apakah Anda Yakin Menghapus Data Ini?</h5>
             <hr>
             <div class="form-group">
-               <label>Nama File</label>
-               <input class="form-control" value="{{ $data->nama_file }}" readonly style="background-color: white;">
-            </div>
-            <div class="form-group">
                <label>Nama Inovasi</label>
                <input class="form-control" value="{{ $data->nama_inovasi }}" readonly style="background-color: white;">
+            </div>
+            <div class="form-group">
+               <label>Nama File</label>
+               <input class="form-control" value="{{ $data->nama_file }}" readonly style="background-color: white;">
             </div>
             <div class="row mt-4">
                <div class="col-md-6">

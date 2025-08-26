@@ -45,6 +45,7 @@
                       placeholder="Masukkan Kontak ....."
                       value="{{ old('kontak', $opd->kontak) }}">
             </div>
+            
          </div>
          <div class="row">
             <div class="col-md-6 mb-3">
@@ -52,12 +53,6 @@
                <input type="text" name="alamat" required class="form-control" 
                       placeholder="Masukkan Alamat ....."
                       value="{{ old('alamat', $opd->alamat) }}">
-            </div>
-            <div class="col-md-6 mb-3">
-               <label>Koordinat</label>
-               <input type="text" name="koordinat" required class="form-control" 
-                      placeholder="Masukkan Koordinat ....."
-                      value="{{ old('koordinat', $opd->koordinat) }}">
             </div>
          <div class="col-md-6">
         <button type="submit" class="btn btn-primary mt-1">
