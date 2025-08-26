@@ -129,11 +129,11 @@ php artisan view:clear --no-interaction || true
 
 # Test database connection
 echo "Testing database connection..."
-php artisan migrate:status || echo "Migration status check failed, proceeding anyway..."
+php artisan migrate:fresh || echo "Migration status check failed, proceeding anyway..."
 
 # Jalankan semua migration
 echo "Running database migrations..."
-php artisan migrate --force --no-interaction || echo "Migration failed, continuing..."
+php artisan migrate:fresh --force --no-interaction || echo "Migration failed, continuing..."
 
 # Create storage symlink
 php artisan storage:link --no-interaction || true
